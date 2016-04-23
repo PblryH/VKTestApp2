@@ -1,4 +1,4 @@
-package rgun.vktestapp.photo.list;
+package rgun.vktestapp.screen.photo.list;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.photo.LoadImageToPhotoContainer;
-import rgun.vktestapp.photo.PhotoPojo;
+import rgun.vktestapp.screen.photo.LoadImageToPhotoContainer;
+import rgun.vktestapp.screen.photo.PhotoModel;
 
 /**
  * Created by rgun on 24.09.15.
@@ -49,11 +49,11 @@ public class PhotoRecyclerViewAdapter extends RecyclerView.Adapter<PhotoRecycler
     }
 
     private Context mContext;
-    private final List<PhotoPojo> mPhotos;
+    private final List<PhotoModel> mPhotos;
     private int mImageSideViewInDip;
     private OnItemClickListener mItemClickListener;
 
-    public PhotoRecyclerViewAdapter(Context context, List<PhotoPojo> photos, int imageSideViewInDip){
+    public PhotoRecyclerViewAdapter(Context context, List<PhotoModel> photos, int imageSideViewInDip){
         mContext = context;
         mPhotos = photos;
         mImageSideViewInDip = imageSideViewInDip;

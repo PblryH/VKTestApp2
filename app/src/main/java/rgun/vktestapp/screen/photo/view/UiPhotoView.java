@@ -1,10 +1,10 @@
-package rgun.vktestapp.photo.view;
+package rgun.vktestapp.screen.photo.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.photo.LoadImageToPhotoContainer;
+import rgun.vktestapp.screen.photo.LoadImageToPhotoContainer;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**

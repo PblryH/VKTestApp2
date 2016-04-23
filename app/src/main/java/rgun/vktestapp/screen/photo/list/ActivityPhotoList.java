@@ -1,4 +1,4 @@
-package rgun.vktestapp.photo.list;
+package rgun.vktestapp.screen.photo.list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 import rgun.vktestapp.Application;
 import rgun.vktestapp.R;
-import rgun.vktestapp.photo.PhotoPojo;
-import rgun.vktestapp.photo.view.ActivityPhotoView;
+import rgun.vktestapp.screen.photo.PhotoModel;
+import rgun.vktestapp.screen.photo.view.ActivityPhotoView;
 
 public class ActivityPhotoList extends AppCompatActivity {
 
@@ -51,7 +51,7 @@ public class ActivityPhotoList extends AppCompatActivity {
         request.executeWithListener(new VKRequest.VKRequestListener() {
             @Override
             public void onComplete(VKResponse response) {
-                final ArrayList<PhotoPojo> photos = getPhotosFromJson(response.json);
+                final ArrayList<PhotoModel> photos = getPhotosFromJson(response.json);
                 Log.d(Application.LOG_TAG, "photos number " + photos.size());
                 uiPhotoList.initPhotoRecyclerViewAdapter(photos, new PhotoRecyclerViewAdapter.OnItemClickListener() {
                     @Override
@@ -73,8 +73,8 @@ public class ActivityPhotoList extends AppCompatActivity {
         });
     }
 
-    private ArrayList<PhotoPojo> getPhotosFromJson(JSONObject jsonObject){
-        ArrayList<PhotoPojo> photos = new ArrayList<>();
+    private ArrayList<PhotoModel> getPhotosFromJson(JSONObject jsonObject){
+        ArrayList<PhotoModel> photos = new ArrayList<>();
         try {
             JSONArray items = jsonObject.getJSONObject("response").getJSONArray("items");
             for (int i = 0; i < items.length(); i++) {
@@ -87,7 +87,7 @@ public class ActivityPhotoList extends AppCompatActivity {
                 if(text.isEmpty()){
                     text = getString(R.string.photo_empty_name);
                 }
-                photos.add(new PhotoPojo(text, src));
+                photos.add(new PhotoModel(text, src));
             }
         } catch (JSONException e) {
             Log.d(Application.LOG_TAG, "photos src parse error", e);
@@ -96,7 +96,7 @@ public class ActivityPhotoList extends AppCompatActivity {
         return photos;
     }
     
-    private void startActivityPhotoView(PhotoPojo photo){
+    private void startActivityPhotoView(PhotoModel photo){
         Intent intent = new Intent(ActivityPhotoList.this,ActivityPhotoView.class);
         intent.putExtra(ActivityPhotoView.INTENT_EXTRA_PHOTO, photo);
         startActivity(intent);

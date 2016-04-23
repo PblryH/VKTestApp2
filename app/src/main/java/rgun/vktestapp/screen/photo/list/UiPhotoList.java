@@ -1,4 +1,4 @@
-package rgun.vktestapp.photo.list;
+package rgun.vktestapp.screen.photo.list;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.List;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.photo.PhotoPojo;
+import rgun.vktestapp.screen.photo.PhotoModel;
 
 /**
  * Created by rgun on 26.09.15.
@@ -28,7 +28,7 @@ public class UiPhotoList {
         recyclerView.setHasFixedSize(true);
     }
 
-    public void initPhotoRecyclerViewAdapter(final List<PhotoPojo> photos, PhotoRecyclerViewAdapter.OnItemClickListener onItemClickListener){
+    public void initPhotoRecyclerViewAdapter(final List<PhotoModel> photos, PhotoRecyclerViewAdapter.OnItemClickListener onItemClickListener){
         PhotoRecyclerViewAdapter adapter = new PhotoRecyclerViewAdapter(mActivity,photos, IMAGE_SIDE_VIEW_IN_DIP);
         adapter.setOnItemClickListener(onItemClickListener);
         recyclerView.setAdapter(adapter);

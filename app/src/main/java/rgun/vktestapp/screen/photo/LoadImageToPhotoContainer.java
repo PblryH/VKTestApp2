@@ -1,4 +1,4 @@
-package rgun.vktestapp.photo;
+package rgun.vktestapp.screen.photo;
 
 import android.content.Context;
 import android.graphics.Bitmap;
