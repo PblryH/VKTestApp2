@@ -17,12 +17,20 @@ public class UiPhotoView {
     private AppCompatActivity mActivity;
     private VH vh;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructors
+    ///////////////////////////////////////////////////////////////////////////
+
     UiPhotoView(AppCompatActivity activity){
         mActivity = activity;
         mActivity.setContentView(R.layout.activity_photo_view);
         vh = new VH(mActivity);
         mActivity.getSupportActionBar().hide();
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Methods
+    ///////////////////////////////////////////////////////////////////////////
 
     public void loadImage(String url) {
         LoadImageToPhotoContainer loadImageToPhotoContainer = new LoadImageToPhotoContainer(
@@ -36,6 +44,9 @@ public class UiPhotoView {
         loadImageToPhotoContainer.loadImage(mActivity, url, null, vh.photoContainer);
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Static classes
+    ///////////////////////////////////////////////////////////////////////////
 
     /**
      * ViewHolder

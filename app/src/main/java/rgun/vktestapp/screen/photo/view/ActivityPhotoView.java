@@ -12,6 +12,10 @@ public class ActivityPhotoView extends AppCompatActivity {
     public static final String INTENT_EXTRA_PHOTO = "photo";
     private UiPhotoView uiPhotoView;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Activity Lifecycle
+    ///////////////////////////////////////////////////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setFullScreen();
@@ -19,6 +23,10 @@ public class ActivityPhotoView extends AppCompatActivity {
         uiPhotoView = new UiPhotoView(this);
         loadPhotoFromIntent();
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Methods
+    ///////////////////////////////////////////////////////////////////////////
 
     private void setFullScreen(){
         requestWindowFeature(Window.FEATURE_NO_TITLE);

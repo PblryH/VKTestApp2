@@ -19,6 +19,9 @@ public class LoginFragment extends android.support.v4.app.Fragment {
     private ILoginActivityCommunicator mActivityCommunicator;
     private MyVk mMyVk;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Fragment lifecycle
+    ///////////////////////////////////////////////////////////////////////////
     @Override
     public void onAttach(final Context context) {
         super.onAttach(context);
@@ -32,7 +35,7 @@ public class LoginFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMyVk = mActivityCommunicator.getmMyVk();
+        mMyVk = mActivityCommunicator.getMyVk();
     }
 
     @Override
@@ -48,6 +51,9 @@ public class LoginFragment extends android.support.v4.app.Fragment {
         return v;
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Static classes
+    ///////////////////////////////////////////////////////////////////////////
 
     /**
      * ViewHolder

@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.screen.photo.a01_extras.photo_container.LoadImageToPhotoContainer;
 import rgun.vktestapp.screen.photo.a01_extras.PhotoModel;
+import rgun.vktestapp.screen.photo.a01_extras.photo_container.LoadImageToPhotoContainer;
 
 /**
  * Created by rgun on 24.09.15.
@@ -25,10 +25,25 @@ public class PhotoRecyclerViewAdapter extends RecyclerView.Adapter<PhotoRecycler
     private int mImageSideViewInDip;
     private OnItemClickListener mItemClickListener;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructors
+    ///////////////////////////////////////////////////////////////////////////
+
     public PhotoRecyclerViewAdapter(Context context, List<PhotoModel> photos, int imageSideViewInDip) {
         mContext = context;
         mPhotos = photos;
         mImageSideViewInDip = imageSideViewInDip;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Methods
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static float convertDpToPixel(float dp, Context context) {
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return px;
     }
 
     @Override
@@ -48,14 +63,6 @@ public class PhotoRecyclerViewAdapter extends RecyclerView.Adapter<PhotoRecycler
 
     }
 
-    public static float convertDpToPixel(float dp, Context context) {
-        Resources resources = context.getResources();
-        DisplayMetrics metrics = resources.getDisplayMetrics();
-        float px = dp * (metrics.densityDpi / 160f);
-        return px;
-    }
-
-
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mItemClickListener = onItemClickListener;
     }
@@ -65,17 +72,25 @@ public class PhotoRecyclerViewAdapter extends RecyclerView.Adapter<PhotoRecycler
         return mPhotos.size();
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Interfaces
+    ///////////////////////////////////////////////////////////////////////////
+
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Static classes
+    ///////////////////////////////////////////////////////////////////////////
 
     /**
      * RecyclerView.ViewHolder
      */
     public class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private View itemView;
         public TextView name;
+        private View itemView;
 
         public PhotosViewHolder(View itemView) {
             super(itemView);

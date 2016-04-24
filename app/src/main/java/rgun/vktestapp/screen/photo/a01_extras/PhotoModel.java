@@ -22,14 +22,18 @@ public class PhotoModel implements Serializable {
     public String name;
     public String url;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructors
+    ///////////////////////////////////////////////////////////////////////////
+
     public PhotoModel(String name, String url) {
         this.name = name;
         this.url = url;
     }
 
-    @SuppressWarnings("serial")
-    public static class List extends ArrayList<PhotoModel> {}
-
+    ///////////////////////////////////////////////////////////////////////////
+    // Methods
+    ///////////////////////////////////////////////////////////////////////////
 
     public static List getPhotosFromJson(JSONObject jsonObject) {
         List photos = new List();
@@ -52,6 +56,14 @@ public class PhotoModel implements Serializable {
         }
         photos.size();
         return photos;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Static classes
+    ///////////////////////////////////////////////////////////////////////////
+
+    @SuppressWarnings("serial")
+    public static class List extends ArrayList<PhotoModel> {
     }
 
 

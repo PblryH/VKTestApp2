@@ -21,12 +21,20 @@ public class UiPhotoList {
     private AppCompatActivity mActivity;
     private VH vh;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Constructors
+    ///////////////////////////////////////////////////////////////////////////
+
     UiPhotoList(AppCompatActivity activity) {
         mActivity = activity;
         activity.setContentView(R.layout.activity_photo_list);
         vh = new VH(activity);
         initRecyclerView();
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Methods
+    ///////////////////////////////////////////////////////////////////////////
 
     private void initRecyclerView(){
         LinearLayoutManager llm = new LinearLayoutManager(mActivity);
@@ -43,6 +51,10 @@ public class UiPhotoList {
         adapter.setOnItemClickListener(onItemClickListener);
         vh.recyclerView.setAdapter(adapter);
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Static classes
+    ///////////////////////////////////////////////////////////////////////////
 
     /**
      * ViewHolder

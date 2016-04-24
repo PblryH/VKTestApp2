@@ -9,5 +9,5 @@ public interface ILoginActivityCommunicator {
     void showLogin();
     void showLogout();
     void startPhotoActivity();
-    MyVk getmMyVk();
+    MyVk getMyVk();
 }

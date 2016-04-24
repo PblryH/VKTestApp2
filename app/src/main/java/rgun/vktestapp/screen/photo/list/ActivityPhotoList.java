@@ -29,6 +29,10 @@ public class ActivityPhotoList extends AppCompatActivity {
 
     private UiPhotoList uiPhotoList;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Activity lifecycle
+    ///////////////////////////////////////////////////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,9 @@ public class ActivityPhotoList extends AppCompatActivity {
         executeVKRequestPhotos();
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Private methods
+    ///////////////////////////////////////////////////////////////////////////
 
     private void executeVKRequestPhotos() {
 
