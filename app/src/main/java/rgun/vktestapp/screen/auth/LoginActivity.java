@@ -84,6 +84,7 @@ public class LoginActivity extends FragmentActivity implements ILoginActivityCom
         startActivity(new Intent(this, ActivityPhotoList.class));
     }
 
+    @Override
     public MyVk getMyVk() {
         return mMyVk;
     }
