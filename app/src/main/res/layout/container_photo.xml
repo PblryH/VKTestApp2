@@ -8,7 +8,8 @@
         android:id="@+id/photo"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:contentDescription="@string/photo_description" />
 
     <TextView
         android:id="@+id/errorText"

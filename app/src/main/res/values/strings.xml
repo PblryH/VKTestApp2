@@ -2,9 +2,10 @@
     <string name="app_name">VK test app</string>
     <integer name="com_vk_sdk_AppId">5079925</integer>
 
-    <string name="action_sign_in_short">Sign in with VK</string>
-    <string name="continue_using_app">Continue using test application</string>
-    <string name="logout">Logout</string>
+    <string name="action_sign_in_short">Войти с помощью VK</string>
+    <string name="continue_using_app">Продолжить использование приложения</string>
+    <string name="logout">Выход</string>
     <string name="display_remote_image_error">Ошибка при загрузке изображения</string>
     <string name="photo_empty_name">Фотография без названия</string>
+    <string name="photo_description">Фотография</string>
 </resources>
