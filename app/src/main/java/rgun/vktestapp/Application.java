@@ -1,5 +1,6 @@
 package rgun.vktestapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -16,6 +17,8 @@ public class Application extends android.app.Application {
 
     public static final String LOG_TAG = "VK_TEST_APP";
 
+    public static Context context;
+
     VKAccessTokenTracker vkAccessTokenTracker = new VKAccessTokenTracker() {
         @Override
         public void onVKAccessTokenChanged(VKAccessToken oldToken, VKAccessToken newToken) {
@@ -31,6 +34,7 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Application.context = getApplicationContext();
         vkAccessTokenTracker.startTracking();
         VKSdk.initialize(this);
     }

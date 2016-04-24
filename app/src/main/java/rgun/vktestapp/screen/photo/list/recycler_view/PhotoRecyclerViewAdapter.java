@@ -1,4 +1,4 @@
-package rgun.vktestapp.screen.photo.list;
+package rgun.vktestapp.screen.photo.list.recycler_view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,47 +20,15 @@ import rgun.vktestapp.screen.photo.PhotoModel;
  */
 public class PhotoRecyclerViewAdapter extends RecyclerView.Adapter<PhotoRecyclerViewAdapter.PhotosViewHolder> {
 
-    public class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView name;
-        private View itemView;
-
-        public PhotosViewHolder(View itemView) {
-            super(itemView);
-            this.itemView = itemView;
-            name = (TextView)itemView.findViewById(R.id.name);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            if(mItemClickListener != null) {
-                mItemClickListener.onItemClick(v, getLayoutPosition());
-            }
-        }
-
-        public View getItemView() {
-            return itemView;
-        }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-    private Context mContext;
     private final List<PhotoModel> mPhotos;
+    private Context mContext;
     private int mImageSideViewInDip;
     private OnItemClickListener mItemClickListener;
 
-    public PhotoRecyclerViewAdapter(Context context, List<PhotoModel> photos, int imageSideViewInDip){
+    public PhotoRecyclerViewAdapter(Context context, List<PhotoModel> photos, int imageSideViewInDip) {
         mContext = context;
         mPhotos = photos;
         mImageSideViewInDip = imageSideViewInDip;
-    }
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-        mItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -80,15 +48,51 @@ public class PhotoRecyclerViewAdapter extends RecyclerView.Adapter<PhotoRecycler
 
     }
 
+    public static float convertDpToPixel(float dp, Context context) {
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return px;
+    }
+
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mItemClickListener = onItemClickListener;
+    }
+
     @Override
     public int getItemCount() {
         return mPhotos.size();
     }
 
-    public static float convertDpToPixel(float dp, Context context){
-        Resources resources = context.getResources();
-        DisplayMetrics metrics = resources.getDisplayMetrics();
-        float px = dp * (metrics.densityDpi / 160f);
-        return px;
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    /**
+     * RecyclerView.ViewHolder
+     */
+    public class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private View itemView;
+        public TextView name;
+
+        public PhotosViewHolder(View itemView) {
+            super(itemView);
+            this.itemView = itemView;
+            name = (TextView) itemView.findViewById(R.id.name);
+            itemView.setOnClickListener(this);
+        }
+
+        public View getItemView() {
+            return itemView;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mItemClickListener != null) {
+                mItemClickListener.onItemClick(v, getLayoutPosition());
+            }
+        }
     }
 }

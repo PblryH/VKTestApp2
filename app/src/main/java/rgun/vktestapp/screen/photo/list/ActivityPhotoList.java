@@ -13,15 +13,9 @@ import com.vk.sdk.api.VKParameters;
 import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 import rgun.vktestapp.Application;
-import rgun.vktestapp.R;
 import rgun.vktestapp.screen.photo.PhotoModel;
+import rgun.vktestapp.screen.photo.list.recycler_view.PhotoRecyclerViewAdapter;
 import rgun.vktestapp.screen.photo.view.ActivityPhotoView;
 
 public class ActivityPhotoList extends AppCompatActivity {
@@ -43,27 +37,31 @@ public class ActivityPhotoList extends AppCompatActivity {
     }
 
 
-    private void executeVKRequestPhotos(){
-        VKRequest request = new VKRequest(METHOD_PHOTOS_GET, VKParameters.from(
-                VKApiConst.COUNT, VALUE_PHOTO_COUNT,
-                VKApiConst.PHOTO_SIZES, VALUE_PHOTO_SIZES,
-                PARAM_SKIP_HIDDEN, VALUE_SKIP_HIDDEN));
+    private void executeVKRequestPhotos() {
+
+        VKRequest request = new VKRequest(
+                METHOD_PHOTOS_GET,
+                VKParameters.from(
+                        VKApiConst.COUNT,
+                        VALUE_PHOTO_COUNT,
+                        VKApiConst.PHOTO_SIZES,
+                        VALUE_PHOTO_SIZES,
+                        PARAM_SKIP_HIDDEN,
+                        VALUE_SKIP_HIDDEN));
+
         request.executeWithListener(new VKRequest.VKRequestListener() {
             @Override
             public void onComplete(VKResponse response) {
-                final ArrayList<PhotoModel> photos = getPhotosFromJson(response.json);
+                final PhotoModel.List photos = PhotoModel.getPhotosFromJson(response.json);
                 Log.d(Application.LOG_TAG, "photos number " + photos.size());
-                uiPhotoList.initPhotoRecyclerViewAdapter(photos, new PhotoRecyclerViewAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        startActivityPhotoView(photos.get(position));
-                    }
-                });
+                fillPhoto(photos);
             }
 
             @Override
             public void onError(VKError error) {
-                Log.d(Application.LOG_TAG, "VKError " + error.errorMessage);
+                if(error != null && !error.errorMessage.isEmpty())
+                Toast.makeText(ActivityPhotoList.this, error.errorMessage, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -73,31 +71,18 @@ public class ActivityPhotoList extends AppCompatActivity {
         });
     }
 
-    private ArrayList<PhotoModel> getPhotosFromJson(JSONObject jsonObject){
-        ArrayList<PhotoModel> photos = new ArrayList<>();
-        try {
-            JSONArray items = jsonObject.getJSONObject("response").getJSONArray("items");
-            for (int i = 0; i < items.length(); i++) {
-                JSONArray sizes = items.getJSONObject(i).getJSONArray("sizes");
-                String src = sizes.getJSONObject(sizes.length()-1).getString("src");
-                String text = "";
-                if (items.getJSONObject(i).has("text")) {
-                    text = items.getJSONObject(i).getString("text");
-                }
-                if(text.isEmpty()){
-                    text = getString(R.string.photo_empty_name);
-                }
-                photos.add(new PhotoModel(text, src));
+    private void fillPhoto(final PhotoModel.List photos){
+        uiPhotoList.fillPhotos(photos, new PhotoRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivityPhotoView(photos.get(position));
             }
-        } catch (JSONException e) {
-            Log.d(Application.LOG_TAG, "photos src parse error", e);
-        }
-        photos.size();
-        return photos;
+        });
     }
-    
-    private void startActivityPhotoView(PhotoModel photo){
-        Intent intent = new Intent(ActivityPhotoList.this,ActivityPhotoView.class);
+
+
+    private void startActivityPhotoView(PhotoModel photo) {
+        Intent intent = new Intent(ActivityPhotoList.this, ActivityPhotoView.class);
         intent.putExtra(ActivityPhotoView.INTENT_EXTRA_PHOTO, photo);
         startActivity(intent);
         Toast.makeText(ActivityPhotoList.this, photo.name, Toast.LENGTH_SHORT).show();
