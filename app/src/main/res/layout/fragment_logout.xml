@@ -1,29 +1,28 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screen.auth.LoginActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".screen.auth.LoginActivity">
 
     <Button
         android:id="@+id/buttonContinue"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_marginTop="16dp"
-        android:text="@string/continue_using_app"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:layout_gravity="end" />
+        android:text="@string/continue_using_app" />
 
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_marginTop="16dp"
-        android:text="@string/logout"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:layout_gravity="end" />
+        android:text="@string/logout" />
 </LinearLayout>
 

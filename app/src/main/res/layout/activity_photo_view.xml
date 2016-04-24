@@ -5,7 +5,8 @@
     android:gravity="center"
     tools:context=".screen.photo.view.ActivityPhotoView">
 
-    <include layout="@layout/container_photo"
-        android:id="@+id/photoContainer"/>
+    <include
+        android:id="@+id/photoContainer"
+        layout="@layout/container_photo" />
 
 </RelativeLayout>
