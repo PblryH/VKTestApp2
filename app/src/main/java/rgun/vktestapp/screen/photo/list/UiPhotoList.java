@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.List;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.screen.photo.PhotoModel;
+import rgun.vktestapp.screen.photo.a01_extras.PhotoModel;
 import rgun.vktestapp.screen.photo.list.recycler_view.PhotoRecyclerViewAdapter;
 
 /**

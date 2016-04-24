@@ -1,4 +1,4 @@
-package rgun.vktestapp.screen.photo;
+package rgun.vktestapp.screen.photo.a01_extras;
 
 import android.util.Log;
 

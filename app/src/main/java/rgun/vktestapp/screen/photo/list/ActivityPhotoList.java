@@ -14,7 +14,7 @@ import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
 
 import rgun.vktestapp.Application;
-import rgun.vktestapp.screen.photo.PhotoModel;
+import rgun.vktestapp.screen.photo.a01_extras.PhotoModel;
 import rgun.vktestapp.screen.photo.list.recycler_view.PhotoRecyclerViewAdapter;
 import rgun.vktestapp.screen.photo.view.ActivityPhotoView;
 

@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="rgun.test003.picasso.ActivityPhotoView">
+    tools:context=".screen.photo.view.ActivityPhotoView">
 
     <include layout="@layout/container_photo"
-        android:id="@+id/photo_container"/>
+        android:id="@+id/photoContainer"/>
 
 </RelativeLayout>

@@ -1,12 +1,9 @@
-package rgun.vktestapp.screen.photo;
+package rgun.vktestapp.screen.photo.a01_extras.photo_container;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -19,6 +16,49 @@ import rgun.vktestapp.R;
  * Created by rgun on 27.09.15.
  */
 public class LoadImageToPhotoContainer {
+
+    private OnImageLoadListener mImageLoadListener;
+    private ContainerPhotoVH vh;
+
+
+    public LoadImageToPhotoContainer(OnImageLoadListener imageLoadListener) {
+        mImageLoadListener = imageLoadListener;
+    }
+
+    public void loadImage(Context context, String url, SquareImageTransformer transformer,
+                          final View view) {
+        vh = new ContainerPhotoVH(view);
+
+        vh.photo.setImageDrawable(null);
+        vh.errorText.setVisibility(View.GONE);
+        vh.progress.setVisibility(View.VISIBLE);
+
+        RequestCreator requestCreator = Picasso.with(context).load(url).tag(context);
+        if (transformer != null) {
+            requestCreator.transform(transformer);
+        }
+        requestCreator.into(vh.photo, new Callback() {
+            @Override
+            public void onSuccess() {
+                vh.errorText.setVisibility(View.GONE);
+                vh.progress.setVisibility(View.GONE);
+                if (mImageLoadListener != null) {
+                    mImageLoadListener.onLoad();
+                }
+            }
+
+            @Override
+            public void onError() {
+                vh.errorText.setVisibility(View.VISIBLE);
+                vh.errorText.setText(R.string.display_remote_image_error);
+                vh.progress.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    public interface OnImageLoadListener {
+        void onLoad();
+    }
 
     /**
      * Трансформирует изображение в квадратное
@@ -33,7 +73,7 @@ public class LoadImageToPhotoContainer {
 
         @Override
         public Bitmap transform(Bitmap source) {
-            int x = 0, y = 0, side = 0;
+            int x = 0, y = 0, side;
             if (source.getWidth() == source.getHeight()) {
                 side = source.getHeight();
             } else if (source.getWidth() < source.getHeight()) {
@@ -58,45 +98,5 @@ public class LoadImageToPhotoContainer {
         public String key() {
             return "transform";
         }
-    }
-
-    public interface OnImageLoadListener{
-        void onLoad();
-    }
-
-    private OnImageLoadListener mImageLoadListener;
-
-    public LoadImageToPhotoContainer(OnImageLoadListener imageLoadListener){
-        mImageLoadListener = imageLoadListener;
-    }
-
-    public void loadImage(Context context, String url, SquareImageTransformer transformer,
-                          final View view) {
-        ImageView photo = (ImageView) view.findViewById(R.id.photo);
-        final TextView errorText = (TextView) view.findViewById(R.id.errorText);
-        final ProgressBar progress = (ProgressBar) view.findViewById(R.id.progress);
-
-        photo.setImageDrawable(null);
-        errorText.setVisibility(View.GONE);
-        progress.setVisibility(View.VISIBLE);
-        RequestCreator requestCreator = Picasso.with(context).load(url).tag(context);
-        if(transformer != null) requestCreator.transform(transformer);
-        requestCreator.into(photo, new Callback() {
-            @Override
-            public void onSuccess() {
-                errorText.setVisibility(View.GONE);
-                progress.setVisibility(View.GONE);
-                if(mImageLoadListener != null){
-                    mImageLoadListener.onLoad();
-                }
-            }
-
-            @Override
-            public void onError() {
-                errorText.setVisibility(View.VISIBLE);
-                errorText.setText(R.string.display_remote_image_error);
-                progress.setVisibility(View.GONE);
-            }
-        });
     }
 }

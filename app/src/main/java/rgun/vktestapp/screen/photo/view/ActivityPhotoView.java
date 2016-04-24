@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import rgun.vktestapp.screen.photo.PhotoModel;
+import rgun.vktestapp.screen.photo.a01_extras.PhotoModel;
 
 public class ActivityPhotoView extends AppCompatActivity {
 
@@ -14,10 +14,18 @@ public class ActivityPhotoView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setFullScreen();
         super.onCreate(savedInstanceState);
         uiPhotoView = new UiPhotoView(this);
+        loadPhotoFromIntent();
+    }
+
+    private void setFullScreen(){
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+    private void loadPhotoFromIntent(){
         PhotoModel photo = (PhotoModel) getIntent().getSerializableExtra(INTENT_EXTRA_PHOTO);
         uiPhotoView.loadImage(photo.url);
     }

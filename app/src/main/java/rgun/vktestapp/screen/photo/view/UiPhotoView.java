@@ -1,10 +1,12 @@
 package rgun.vktestapp.screen.photo.view;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
+import android.view.View;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.screen.photo.LoadImageToPhotoContainer;
+import rgun.vktestapp.screen.photo.a01_extras.photo_container.ContainerPhotoVH;
+import rgun.vktestapp.screen.photo.a01_extras.photo_container.LoadImageToPhotoContainer;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
@@ -13,10 +15,12 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class UiPhotoView {
 
     private AppCompatActivity mActivity;
+    private VH vh;
 
     UiPhotoView(AppCompatActivity activity){
         mActivity = activity;
         mActivity.setContentView(R.layout.activity_photo_view);
+        vh = new VH(mActivity);
         mActivity.getSupportActionBar().hide();
     }
 
@@ -25,11 +29,25 @@ public class UiPhotoView {
                 new LoadImageToPhotoContainer.OnImageLoadListener() {
                     @Override
                     public void onLoad() {
-                        ImageView image = (ImageView) mActivity.findViewById(R.id.photo);
-                        PhotoViewAttacher attacher = new PhotoViewAttacher(image);
+                        PhotoViewAttacher attacher = new PhotoViewAttacher(vh.photoVH.photo);
                         attacher.update();
                     }
                 });
-        loadImageToPhotoContainer.loadImage(mActivity, url, null, mActivity.findViewById(R.id.photo_container));
+        loadImageToPhotoContainer.loadImage(mActivity, url, null, vh.photoContainer);
+    }
+
+
+    /**
+     * ViewHolder
+     */
+    private static class VH {
+
+        private View photoContainer;
+        private ContainerPhotoVH photoVH;
+
+        public VH(Activity activity) {
+            photoContainer = activity.findViewById(R.id.photoContainer);
+            photoVH = new ContainerPhotoVH(photoContainer);
+        }
     }
 }

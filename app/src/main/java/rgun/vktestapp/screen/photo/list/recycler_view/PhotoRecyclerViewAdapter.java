@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.screen.photo.LoadImageToPhotoContainer;
-import rgun.vktestapp.screen.photo.PhotoModel;
+import rgun.vktestapp.screen.photo.a01_extras.photo_container.LoadImageToPhotoContainer;
+import rgun.vktestapp.screen.photo.a01_extras.PhotoModel;
 
 /**
  * Created by rgun on 24.09.15.
