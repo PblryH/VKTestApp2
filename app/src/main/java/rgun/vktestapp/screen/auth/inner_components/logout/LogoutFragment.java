@@ -1,4 +1,4 @@
-package rgun.vktestapp.screen.auth;
+package rgun.vktestapp.screen.auth.inner_components.logout;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,18 +6,17 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import rgun.vktestapp.R;
-import rgun.vktestapp.screen.auth.myVk.MyVk;
+import com.vk.sdk.VKSdk;
+
+import rgun.vktestapp.screen.auth.AuthActivityInteractor;
 
 /**
  * Created by rgun on 23.04.16.
  */
 public class LogoutFragment extends android.support.v4.app.Fragment {
 
-    private ILoginActivityCommunicator mActivity;
-    private MyVk mMyVk;
+    private AuthActivityInteractor mActivityInteractor;
 
     ///////////////////////////////////////////////////////////////////////////
     // Fragment lifecycle
@@ -26,55 +25,37 @@ public class LogoutFragment extends android.support.v4.app.Fragment {
     public void onAttach(final Context context) {
         super.onAttach(context);
         try {
-            mActivity = (ILoginActivityCommunicator) context;
+            mActivityInteractor = (AuthActivityInteractor) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context + " must implement " + ILoginActivityCommunicator.class);
+            throw new ClassCastException(context + " must implement " + AuthActivityInteractor.class);
         }
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMyVk = mActivity.getMyVk();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_logout, container, false);
-        VH vh = new VH(v);
+        View v = inflater.inflate(LogoutVH.layout, container, false);
+        LogoutVH vh = new LogoutVH(v);
         vh.buttonContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mActivity.startPhotoActivity();
+                mActivityInteractor.startPhotoScreen();
             }
         });
         vh.buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mMyVk.logout();
-                if (!mMyVk.isLoggedIn()) {
-                    mActivity.showLogin();
+                VKSdk.logout();
+                if (!VKSdk.isLoggedIn()) {
+                    mActivityInteractor.showLogin();
                 }
             }
         });
         return v;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Static classes
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * ViewHolder
-     */
-    private static class VH {
-
-        Button buttonContinue;
-        Button buttonLogout;
-
-        public VH(View v) {
-            buttonContinue = (Button) v.findViewById(R.id.buttonContinue);
-            buttonLogout = (Button) v.findViewById(R.id.buttonLogout);
-        }
-    }
 }
