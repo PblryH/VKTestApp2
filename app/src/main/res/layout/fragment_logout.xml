@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".screen.auth.AuthActivity">
+    tools:context=".ui.screen.auth.AuthActivity">
 
     <Button
         android:id="@+id/buttonContinue"

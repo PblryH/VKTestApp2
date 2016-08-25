@@ -8,7 +8,7 @@ import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKAccessTokenTracker;
 import com.vk.sdk.VKSdk;
 
-import rgun.vktestapp.screen.auth.AuthActivity;
+import rgun.vktestapp.ui.screen.auth.AuthActivity;
 
 /**
  * Created by rgun on 23.09.15.

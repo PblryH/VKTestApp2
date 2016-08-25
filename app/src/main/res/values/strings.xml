@@ -8,4 +8,7 @@
     <string name="display_remote_image_error">Ошибка при загрузке изображения</string>
     <string name="photo_empty_name">Фотография без названия</string>
     <string name="photo_description">Фотография</string>
+
+
+    <string name="empty">empty</string>
 </resources>
