@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import rgun.vktestapp.screen.auth.model.AuthModel;
 import rgun.vktestapp.screen.auth.model.AuthModelImpl;
-import rgun.vktestapp.screen.auth.presenter.AuthPresenter;
 import rgun.vktestapp.screen.auth.presenter.AuthPresenterImpl;
 import rgun.vktestapp.screen.auth.view.AuthView;
 import rgun.vktestapp.screen.auth.view.AuthViewImpl;
@@ -26,7 +25,7 @@ public class AuthActivity extends AppCompatActivity implements AuthActivityInter
         super.onCreate(savedInstanceState);
         mView = new AuthViewImpl(this);
         mModel = new AuthModelImpl(this);
-        AuthPresenter presenter = new AuthPresenterImpl(mView, mModel);
+        new AuthPresenterImpl(mView, mModel);
     }
 
     @Override
