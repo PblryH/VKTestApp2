@@ -1,5 +1,6 @@
 package rgun.vktestapp.screen.auth.presenter;
 
+import com.vk.sdk.VKSdk;
 import com.vk.sdk.api.VKError;
 
 import rgun.vktestapp.screen.auth.model.AuthModel;
@@ -41,5 +42,14 @@ public class AuthPresenterImpl implements AuthPresenter{
         mView = view;
         mModel = model;
         mModel.setCallback(mCallBack);
+        enter();
+    }
+
+    private void enter() {
+        if (VKSdk.isLoggedIn()) {
+            mView.showPhotoScreen();
+        } else {
+            mView.startVkAuth();
+        }
     }
 }

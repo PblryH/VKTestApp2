@@ -12,4 +12,6 @@ public interface AuthView {
     void showPhotoScreen();
 
     void showToast(String s);
+
+    void startVkAuth();
 }

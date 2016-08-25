@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.vk.sdk.VKSdk;
+
 import rgun.vktestapp.R;
 import rgun.vktestapp.screen.auth.inner_components.login.LoginFragment;
 import rgun.vktestapp.screen.auth.inner_components.logout.LogoutFragment;
+import rgun.vktestapp.screen.auth.model.AuthModelImpl;
 import rgun.vktestapp.screen.photo.list.ActivityPhotoList;
 
 /**
@@ -46,5 +49,10 @@ public class AuthViewImpl implements AuthView {
     @Override
     public void showToast(String s) {
         Toast.makeText(mActivity, s, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void startVkAuth() {
+        VKSdk.login(mActivity, AuthModelImpl.mScope);
     }
 }
