@@ -44,6 +44,7 @@ public class AuthViewImpl implements AuthView {
     @Override
     public void showPhotoScreen() {
         mActivity.startActivity(new Intent(mActivity, ActivityPhotoList.class));
+        mActivity.finish();
     }
 
     @Override
