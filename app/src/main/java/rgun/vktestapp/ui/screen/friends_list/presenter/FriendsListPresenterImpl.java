@@ -15,7 +15,7 @@ public class FriendsListPresenterImpl implements FriendsListPresenter {
     private FriendsListModel.GetFriendsCallBack mGetFriendsCallBack = new FriendsListModel.GetFriendsCallBack() {
         @Override
         public void onSuccess(FriendModel.List friends) {
-
+            mView.setFriendsToList(friends);
         }
 
         @Override
