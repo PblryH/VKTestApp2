@@ -5,7 +5,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-import rgun.vktestapp.ui.screen.BaseViewMvp;
+import rgun.vktestapp.ui.extras.BaseViewMvp;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendModel;
 import rgun.vktestapp.ui.screen.friends_list.presenter.FriendsListPresenter;
 

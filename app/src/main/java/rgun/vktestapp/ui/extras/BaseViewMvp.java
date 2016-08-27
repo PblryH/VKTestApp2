@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.screen;
+package rgun.vktestapp.ui.extras;
 
 /**
  * Created by rgun on 04.08.16.
