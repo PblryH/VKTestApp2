@@ -14,7 +14,6 @@ public class RecyclerViewEmptySupport extends RecyclerView {
 
     private AdapterDataObserver emptyObserver = new AdapterDataObserver() {
 
-
         @Override
         public void onChanged() {
             Adapter<?> adapter =  getAdapter();
@@ -30,6 +29,24 @@ public class RecyclerViewEmptySupport extends RecyclerView {
             }
 
         }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+
+            Adapter<?> adapter =  getAdapter();
+            if(adapter != null && emptyView != null) {
+                if(adapter.getItemCount() == 0) {
+                    emptyView.setVisibility(View.VISIBLE);
+                    RecyclerViewEmptySupport.this.setVisibility(View.GONE);
+                }
+                else {
+                    emptyView.setVisibility(View.GONE);
+                    RecyclerViewEmptySupport.this.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+
+
     };
 
     public RecyclerViewEmptySupport(Context context) {

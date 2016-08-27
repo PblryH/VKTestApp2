@@ -1,6 +1,5 @@
 package rgun.vktestapp.ui.screen.friends_list.model;
 
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -27,13 +26,8 @@ public class FriendsListModelImpl implements FriendsListModel {
     public static final String ADDITIONAL_FIELD_PHOTO = "photo_200_orig";
     public static final String CACHE_KEY = "friendslist";
 
-    private AppCompatActivity mActivity;
     private GetFriendsCallBack mCallBack;
     private SimpleDiskCache mCache = Application.cache;
-
-    public FriendsListModelImpl(AppCompatActivity activity) {
-        mActivity = activity;
-    }
 
     @Override
     public void getFriends(GetFriendsCallBack callBack) {

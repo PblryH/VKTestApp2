@@ -26,6 +26,7 @@ public abstract class RecyclerViewAdapter<D, VH extends RecyclerView.ViewHolder>
         int size = mDataList.size();
         mDataList.clear();
         notifyItemRangeRemoved(0, size);
+        notifyDataSetChanged();
     }
 
     public void addAll(List<D> data) {

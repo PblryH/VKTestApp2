@@ -18,7 +18,7 @@ public class FriendsListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FriendsListModel model = new FriendsListModelImpl(this);
+        FriendsListModel model = new FriendsListModelImpl();
         mView = new FriendsListViewImpl(this);
         new FriendsListPresenterImpl(mView, model);
     }
