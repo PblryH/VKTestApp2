@@ -93,6 +93,7 @@ public class FriendsListViewImpl implements
     @Override
     public void clearList() {
         mAdapter.clear();
+        vh.recycler.recyclerView.scrollToPosition(0);
     }
 
     @Override
