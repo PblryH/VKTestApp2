@@ -13,7 +13,6 @@ import com.vk.sdk.api.VKResponse;
 
 import org.json.JSONException;
 
-import java.io.File;
 import java.io.IOException;
 
 import rgun.vktestapp.Application;
@@ -26,38 +25,41 @@ public class FriendsListModelImpl implements FriendsListModel {
 
     public static final String METHOD_PHOTOS_GET = "friends.get";
     public static final String ADDITIONAL_FIELD_PHOTO = "photo_200_orig";
-    public static final int APP_VERSION = 1;
-    public static final int MAX_SIZE = 1024 * 1024;
     public static final String CACHE_KEY = "friendslist";
 
     private AppCompatActivity mActivity;
     private GetFriendsCallBack mCallBack;
-    private SimpleDiskCache mCache;
+    private SimpleDiskCache mCache = Application.cache;
 
     public FriendsListModelImpl(AppCompatActivity activity) {
         mActivity = activity;
-        File dir = new File(mActivity.getCacheDir(), "friendslist.cache");
-        try {
-            mCache = SimpleDiskCache.open(dir, APP_VERSION, MAX_SIZE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
     public void getFriends(GetFriendsCallBack callBack) {
         mCallBack = callBack;
         try {
-            if (mCache.contains(CACHE_KEY)){
+            if (mCache != null && mCache.contains(CACHE_KEY)) {
                 String items = mCache.getString(CACHE_KEY).getString();
-                Log.d(Application.LOG_TAG,"from cache");
                 mCallBack.onSuccess(getFriendsFromJson(items));
+                Log.d(Application.LOG_TAG, "from cache");
                 return;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         executeVKRequestPhotos();
+    }
+
+    @Override
+    public void clearCache() {
+        try {
+            if (mCache != null) {
+                mCache.clear();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void executeVKRequestPhotos() {
@@ -72,9 +74,11 @@ public class FriendsListModelImpl implements FriendsListModel {
                 String items = null;
                 try {
                     items = response.json.getJSONObject("response").getJSONArray("items").toString();
-                    Log.d(Application.LOG_TAG,"from network");
+                    Log.d(Application.LOG_TAG, "from network");
                     try {
-                        mCache.put(CACHE_KEY, items);
+                        if (mCache != null) {
+                            mCache.put(CACHE_KEY, items);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -96,7 +100,7 @@ public class FriendsListModelImpl implements FriendsListModel {
         });
     }
 
-    private FriendModel.List getFriendsFromJson(String json){
+    private FriendModel.List getFriendsFromJson(String json) {
         Gson gson = new GsonBuilder().create();
         FriendModel.List friends = new FriendModel.List();
         if (json != null) {

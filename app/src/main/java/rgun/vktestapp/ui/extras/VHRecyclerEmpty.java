@@ -1,10 +1,9 @@
-package rgun.vktestapp.ui.screen.friends_list.view;
+package rgun.vktestapp.ui.extras;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.ui.extras.RecyclerViewEmptySupport;
 
 
 /**

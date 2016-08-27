@@ -8,7 +8,11 @@ import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKAccessTokenTracker;
 import com.vk.sdk.VKSdk;
 
+import java.io.File;
+import java.io.IOException;
+
 import rgun.vktestapp.ui.screen.auth.AuthActivity;
+import rgun.vktestapp.utils.SimpleDiskCache;
 
 /**
  * Created by rgun on 23.09.15.
@@ -16,8 +20,11 @@ import rgun.vktestapp.ui.screen.auth.AuthActivity;
 public class Application extends android.app.Application {
 
     public static final String LOG_TAG = "VK_TEST_APP";
+    public static final int CACHE_APP_VERSION = 1;
+    public static final int CACHE_MAX_SIZE = 1024 * 1024;
 
     public static Context context;
+    public static SimpleDiskCache cache;
 
     VKAccessTokenTracker vkAccessTokenTracker = new VKAccessTokenTracker() {
         @Override
@@ -38,9 +45,19 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Application.context = getApplicationContext();
+        context = getApplicationContext();
         vkAccessTokenTracker.startTracking();
         VKSdk.initialize(this);
+        initCache();
+    }
+
+    private void initCache(){
+        File dir = new File(context.getCacheDir(), "friendslist.cache");
+        try {
+            cache = SimpleDiskCache.open(dir, CACHE_APP_VERSION, CACHE_MAX_SIZE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

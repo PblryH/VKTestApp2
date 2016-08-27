@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.screen.friends_list.view;
+package rgun.vktestapp.ui.extras;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;

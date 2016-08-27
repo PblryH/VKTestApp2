@@ -21,11 +21,6 @@ public class AuthPresenterImpl implements AuthPresenter{
         }
 
         @Override
-        public void mustShowLogout() {
-            mView.showLogout();
-        }
-
-        @Override
         public void onAuthorized() {
             mView.showFriendsListScreen();
         }
@@ -49,7 +44,7 @@ public class AuthPresenterImpl implements AuthPresenter{
         if (VKSdk.isLoggedIn()) {
             mView.showFriendsListScreen();
         } else {
-            mView.startVkAuth();
+            mView.showLogin();
         }
     }
 }

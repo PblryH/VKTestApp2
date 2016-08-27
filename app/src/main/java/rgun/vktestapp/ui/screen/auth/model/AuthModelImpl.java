@@ -52,7 +52,7 @@ public class AuthModelImpl implements AuthModel {
     public void onResume() {
         mIsResumed = true;
         if (VKSdk.isLoggedIn()) {
-            mCallback.mustShowLogout();
+            mCallback.onAuthorized();
         } else {
             mCallback.mustShowLogin();
         }
@@ -83,7 +83,7 @@ public class AuthModelImpl implements AuthModel {
                             mCallback.mustShowLogin();
                             break;
                         case LoggedIn:
-                            mCallback.mustShowLogout();
+//                            mCallback.mustShowLogout();
                             break;
                         case Pending:
                             break;

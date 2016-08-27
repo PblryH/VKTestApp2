@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import rgun.vktestapp.R;
 import rgun.vktestapp.ui.extras.RecyclerViewAdapter;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendModel;
-import rgun.vktestapp.ui.screen.photo.a01_extras.photo_container.LoadImageToPhotoContainer;
 
 /**
  * Created by rgun on 03.12.15.
@@ -31,14 +30,6 @@ public class FriendsListAdapter extends RecyclerViewAdapter<FriendModel, Friends
         mImageSideViewInDip = imageSideViewInDip;
     }
 
-    @Override
-    protected FriendsViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(FriendsViewHolder.layout,null);
-        return new FriendsViewHolder(view);
-    }
-
-
-
     public static float convertDpToPixel(float dp, Context context) {
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
@@ -47,15 +38,20 @@ public class FriendsListAdapter extends RecyclerViewAdapter<FriendModel, Friends
     }
 
     @Override
+    protected FriendsViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(FriendsViewHolder.layout, null);
+        return new FriendsViewHolder(view);
+    }
+
+    @Override
     protected void bindNormalViewHolder(FriendsViewHolder vh, int position) {
 
-        vh.name.setText(mDataList.get(position).firstName);
+        vh.name.setText(String.format("%s %s", mDataList.get(position).firstName, mDataList.get(position).lastName));
 
         LoadImageToPhotoContainer loadImageToPhotoContainer = new LoadImageToPhotoContainer(null);
         loadImageToPhotoContainer.loadImage(mActivity, mDataList.get(position).photoUrl,
                 new LoadImageToPhotoContainer.SquareImageTransformer((int) convertDpToPixel(mImageSideViewInDip, mActivity)),
                 vh.itemView);
-
 
     }
 
@@ -63,7 +59,7 @@ public class FriendsListAdapter extends RecyclerViewAdapter<FriendModel, Friends
     // Static classes
     ///////////////////////////////////////////////////////////////////////////
 
-    public static class FriendsViewHolder extends RecyclerView.ViewHolder{
+    public static class FriendsViewHolder extends RecyclerView.ViewHolder {
 
         private static final int layout = R.layout.list_item_friend;
 

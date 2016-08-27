@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.screen.photo.a01_extras.photo_container;
+package rgun.vktestapp.ui.screen.friends_list.view;
 
 import android.view.View;
 import android.widget.ImageView;

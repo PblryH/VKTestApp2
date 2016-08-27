@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/clearCache"
+        android:title="@string/clearCache"
+        android:icon="@drawable/ic_delete_black_24dp"
+        app:showAsAction="always|collapseActionView"/>
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:title="@string/exit"
+        app:showAsAction="always|collapseActionView"/>
+</menu>

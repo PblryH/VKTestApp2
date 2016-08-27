@@ -21,8 +21,6 @@ public interface AuthModel {
 
         void mustShowLogin();
 
-        void mustShowLogout();
-
         void onAuthorized();
 
         void onAuthorizationError(VKError error);

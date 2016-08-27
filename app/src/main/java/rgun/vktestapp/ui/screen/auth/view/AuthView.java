@@ -7,11 +7,7 @@ public interface AuthView {
 
     void showLogin();
 
-    void showLogout();
-
     void showFriendsListScreen();
 
     void showToast(String s);
-
-    void startVkAuth();
 }

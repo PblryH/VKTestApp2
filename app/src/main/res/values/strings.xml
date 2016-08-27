@@ -10,5 +10,18 @@
     <string name="photo_description">Фотография</string>
 
 
-    <string name="empty">empty</string>
+    <string name="empty">Empty</string>
+    <string name="friends">Друзья</string>
+    <string name="clearCache">Удалить кэш</string>
+    <string name="exit">Выйти</string>
+    <string name="exitDialogTitle">Выход</string>
+    <string name="exitDialogMessage">Вы действительно хотите выйти?</string>
+    <string name="btnYes">Да</string>
+    <string name="btnNo">Нет</string>
+    <string name="btnCancel">Отмена</string>
+    <string name="btnCacheAndList">Кэш и список</string>
+    <string name="btnOnlyCache">Только кэш</string>
+    <string name="clearCacheDialogTitle">Очистить кэш</string>
+    <string name="clearCacheDialogMessage">Вы дествительно желаете очистить кэш?</string>
+    <string name="cacheCleared">Кэш удален</string>
 </resources>

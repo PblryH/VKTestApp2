@@ -7,6 +7,8 @@ public interface FriendsListModel {
 
     void getFriends(GetFriendsCallBack callBack);
 
+    void clearCache();
+
 
     interface GetFriendsCallBack{
 
