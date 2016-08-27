@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
+ * RecyclerView with Empty State Support
  * Created by rgun on 25.02.16.
  */
 public class RecyclerViewEmptySupport extends RecyclerView {

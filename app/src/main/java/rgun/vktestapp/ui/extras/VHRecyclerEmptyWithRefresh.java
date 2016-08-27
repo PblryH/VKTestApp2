@@ -6,6 +6,7 @@ import android.view.View;
 import rgun.vktestapp.R;
 
 /**
+ * Common View Holder for RecyclerViewEmptySupport  with pull-to-refresh
  * Created by rgun on 25.05.16.
  */
 public class VHRecyclerEmptyWithRefresh extends VHRecyclerEmpty{

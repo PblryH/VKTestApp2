@@ -14,7 +14,6 @@ import com.vk.sdk.api.VKError;
  */
 public class AuthModelImpl implements AuthModel {
 
-
     /**
      * Scope is set of required permissions for your application
      *
@@ -81,13 +80,6 @@ public class AuthModelImpl implements AuthModel {
                     switch (res) {
                         case LoggedOut:
                             mCallback.mustShowLogin();
-                            break;
-                        case LoggedIn:
-//                            mCallback.mustShowLogout();
-                            break;
-                        case Pending:
-                            break;
-                        case Unknown:
                             break;
                     }
                 }

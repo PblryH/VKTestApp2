@@ -15,7 +15,7 @@ import rgun.vktestapp.ui.screen.auth.view.AuthViewImpl;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class AuthActivity extends AppCompatActivity implements AuthActivityInteractor {
+public class AuthActivity extends AppCompatActivity {
 
     private AuthModel mModel;
     private AuthView mView;
@@ -45,17 +45,6 @@ public class AuthActivity extends AppCompatActivity implements AuthActivityInter
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mModel.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public void showLogin() {
-        mView.showLogin();
-    }
-
-
-    @Override
-    public void startPhotoScreen() {
-        mView.showFriendsListScreen();
     }
 
 }

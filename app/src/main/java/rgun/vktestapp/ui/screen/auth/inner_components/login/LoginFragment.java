@@ -15,10 +15,6 @@ import rgun.vktestapp.ui.screen.auth.model.AuthModelImpl;
  */
 public class LoginFragment extends android.support.v4.app.Fragment {
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Fragment lifecycle
-    ///////////////////////////////////////////////////////////////////////////
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

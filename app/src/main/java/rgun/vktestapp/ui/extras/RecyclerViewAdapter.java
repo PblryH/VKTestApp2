@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
+ * Common RecyclerViewAdapter
  * Created by rgun on 03.12.15.
  */
 public abstract class RecyclerViewAdapter<D, VH extends RecyclerView.ViewHolder>

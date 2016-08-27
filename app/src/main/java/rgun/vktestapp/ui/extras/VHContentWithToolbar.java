@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import rgun.vktestapp.R;
 
 /**
+ * Common View Holder with toolbar
  * Created by rgun on 22.06.16.
  */
 abstract public class VHContentWithToolbar {
