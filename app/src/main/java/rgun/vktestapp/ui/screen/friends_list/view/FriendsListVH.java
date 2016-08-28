@@ -1,6 +1,7 @@
 package rgun.vktestapp.ui.screen.friends_list.view;
 
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 import rgun.vktestapp.R;
 import rgun.vktestapp.ui.extras.VHContentWithToolbar;
@@ -11,13 +12,13 @@ import rgun.vktestapp.ui.extras.VHRecyclerEmptyWithRefresh;
  */
 public class FriendsListVH extends VHContentWithToolbar {
 
-    public static final int layout = R.layout.activity_friends_list;
+    public static final int layout = R.layout.fragment_friends_list;
 
     public VHRecyclerEmptyWithRefresh recycler;
 
-    public FriendsListVH(AppCompatActivity activity) {
-        super(activity);
-        recycler = new VHRecyclerEmptyWithRefresh(activity);
+    public FriendsListVH(LayoutInflater inflater, ViewGroup view) {
+        super(inflater, view);
+        recycler = new VHRecyclerEmptyWithRefresh(getView());
     }
 
     @Override

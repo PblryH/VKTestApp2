@@ -10,4 +10,6 @@ public interface FriendsListPresenter {
     void onClearCacheClick();
 
     void onPullToRefresh();
+
+    void getFriends();
 }

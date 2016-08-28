@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.screen.friends_list.FriendsListActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <include layout="@layout/layout_recycler_empty_with_refresh"/>
+    <fragment
+        android:id="@+id/fragment_container"
+        android:name="rgun.vktestapp.ui.screen.friends_list.FriendsListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </fragment>
 
-</RelativeLayout>
+</LinearLayout>

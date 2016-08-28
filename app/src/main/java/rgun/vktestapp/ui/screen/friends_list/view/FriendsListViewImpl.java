@@ -6,9 +6,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,14 +37,7 @@ public class FriendsListViewImpl implements
     private LinearLayoutManager mLayoutManager;
     private FriendsListAdapter mAdapter;
     private FriendsListPresenter mPresenter;
-
-    public FriendsListViewImpl(AppCompatActivity activity) {
-        mActivity = activity;
-        vh = new FriendsListVH(mActivity);
-        initToolbar();
-        initAdapter();
-        vh.recycler.swipeRefreshLayout.setOnRefreshListener(this);
-    }
+    private boolean firstInit = true;
 
     private void initToolbar() {
         // настраиваем action bar
@@ -50,23 +46,26 @@ public class FriendsListViewImpl implements
     }
 
     private void initAdapter() {
+        mAdapter = new FriendsListAdapter(mActivity, IMAGE_SIDE_VIEW_IN_DIP);
+    }
+
+    private void initRecyclerView(){
+        mLayoutManager = new LinearLayoutManager(mActivity);
         vh.recycler.recyclerView.setEmptyView(vh.recycler.empty);
         vh.recycler.recyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL_LIST));
-        mLayoutManager = new LinearLayoutManager(mActivity);
         vh.recycler.recyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new FriendsListAdapter(mActivity, IMAGE_SIDE_VIEW_IN_DIP);
         vh.recycler.recyclerView.setAdapter(mAdapter);
     }
 
     @Override
     public void setFriendsToList(ArrayList<FriendModel> friends) {
+        vh.recycler.recyclerView.scrollToPosition(0);
         mAdapter.addAll(friends);
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = mActivity.getMenuInflater();
+    public boolean onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -92,8 +91,8 @@ public class FriendsListViewImpl implements
 
     @Override
     public void clearList() {
-        mAdapter.clear();
         vh.recycler.recyclerView.scrollToPosition(0);
+        mAdapter.clear();
     }
 
     @Override
@@ -151,5 +150,35 @@ public class FriendsListViewImpl implements
     @Override
     public void setPresenter(FriendsListPresenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void bindActivity(AppCompatActivity activity) {
+        mActivity = activity;
+    }
+
+    @Override
+    public void unbindActivity() {
+        vh.unbind();
+    }
+
+    @Override
+    public void initView(LayoutInflater inflater, ViewGroup view) {
+        vh = new FriendsListVH(inflater, view);
+        initToolbar();
+        if (firstInit) {
+            initAdapter();
+        }
+        initRecyclerView();
+        vh.recycler.swipeRefreshLayout.setOnRefreshListener(this);
+        if (firstInit){
+            mPresenter.getFriends();
+        }
+        firstInit = false;
+    }
+
+    @Override
+    public View getView() {
+        return vh.getView();
     }
 }

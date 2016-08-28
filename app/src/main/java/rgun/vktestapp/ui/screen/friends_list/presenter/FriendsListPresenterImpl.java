@@ -33,7 +33,6 @@ public class FriendsListPresenterImpl implements FriendsListPresenter {
         mView = view;
         mView.setPresenter(this);
         mModel = model;
-        mModel.getFriends(mGetFriendsCallBack);
     }
 
     @Override
@@ -68,6 +67,11 @@ public class FriendsListPresenterImpl implements FriendsListPresenter {
 
     @Override
     public void onPullToRefresh() {
+        getFriends();
+    }
+
+    @Override
+    public void getFriends() {
         mModel.getFriends(mGetFriendsCallBack);
     }
 }
