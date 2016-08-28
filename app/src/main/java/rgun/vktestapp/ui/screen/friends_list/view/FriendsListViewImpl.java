@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.ui.extras.DividerItemDecoration;
+import rgun.vktestapp.ui.extras.recycler.DividerItemDecoration;
 import rgun.vktestapp.ui.screen.auth.AuthActivity;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendModel;
 import rgun.vktestapp.ui.screen.friends_list.presenter.FriendsListPresenter;
@@ -86,8 +86,8 @@ public class FriendsListViewImpl implements
     }
 
     @Override
-    public void showToast(String error) {
-        Toast.makeText(mActivity, error, Toast.LENGTH_SHORT).show();
+    public void showToast(String s) {
+        Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

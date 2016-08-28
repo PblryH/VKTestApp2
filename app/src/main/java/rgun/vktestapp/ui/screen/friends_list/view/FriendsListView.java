@@ -6,7 +6,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-import rgun.vktestapp.ui.extras.BaseView;
+import rgun.vktestapp.ui.extras.architecture.BaseView;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendModel;
 import rgun.vktestapp.ui.screen.friends_list.presenter.FriendsListPresenter;
 
@@ -15,34 +15,81 @@ import rgun.vktestapp.ui.screen.friends_list.presenter.FriendsListPresenter;
  */
 public interface FriendsListView extends BaseView<FriendsListPresenter> {
 
+    /**
+     * Заполнить список друзей
+     * @param friends
+     */
     void setFriendsToList(ArrayList<FriendModel> friends);
 
+    /**
+     * При вызове Fragment#onCreateOptionsMenu
+     */
     boolean onCreateOptionsMenu(Menu menu, MenuInflater inflater);
 
+    /**
+     * При вызове Fragment#onOptionsItemSelected
+     */
     boolean onOptionsItemSelected(MenuItem item);
 
-    void showToast(String error);
+    /**
+     * Показать тоаст
+     * @param s сообщение
+     */
+    void showToast(String s);
 
+    /**
+     * Очистить список
+     */
     void clearList();
 
+    /**
+     * Установить состояние индикатора обновления pull-to-refresh
+     * @param b
+     */
     void setPullToRefreshState(boolean b);
 
+    /**
+     * Открыть экран авторизации
+     */
     void openAuthScreen();
 
+    /**
+     * Показать диалог выхода
+     * @param listener {@link ExitDialogListener}
+     */
     void showExitDialog(ExitDialogListener listener);
 
+    /**
+     * Показать диалог очистки кэша
+     * @param listener {@link ClearCacheDialogListener}
+     */
     void showClearCacheDialog(ClearCacheDialogListener listener);
 
+    /**
+     * Листнер диалога выхода
+     */
     interface ExitDialogListener {
 
+        /**
+         * При выходе
+         */
         void onExit();
 
     }
 
+    /**
+     * Листнер диалога очистки кэша
+     */
     interface ClearCacheDialogListener {
 
+        /**
+         * При очистке только кэша
+         */
         void onClearCache();
 
+        /**
+         * При очистке кэша и списка
+         */
         void onClearCacheAndList();
 
     }

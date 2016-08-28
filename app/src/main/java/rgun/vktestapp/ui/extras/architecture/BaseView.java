@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.extras;
+package rgun.vktestapp.ui.extras.architecture;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -38,5 +38,9 @@ public interface BaseView<P> {
     void initView(LayoutInflater inflater, ViewGroup view);
 
 
+    /**
+     * Получить вью компонент
+     * @return {@link View}
+     */
     View getView();
 }

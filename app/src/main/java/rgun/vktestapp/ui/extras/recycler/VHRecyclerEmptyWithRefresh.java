@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.extras;
+package rgun.vktestapp.ui.extras.recycler;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;

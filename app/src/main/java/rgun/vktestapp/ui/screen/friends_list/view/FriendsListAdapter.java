@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.ui.extras.RecyclerViewAdapter;
+import rgun.vktestapp.ui.extras.recycler.RecyclerViewAdapter;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendModel;
 
 /**

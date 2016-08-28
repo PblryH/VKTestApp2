@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.extras;
+package rgun.vktestapp.ui.extras.recycler;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;

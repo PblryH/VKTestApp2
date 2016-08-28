@@ -4,8 +4,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import rgun.vktestapp.R;
-import rgun.vktestapp.ui.extras.VHContentWithToolbar;
-import rgun.vktestapp.ui.extras.VHRecyclerEmptyWithRefresh;
+import rgun.vktestapp.ui.extras.view_holder.VHContentWithToolbar;
+import rgun.vktestapp.ui.extras.recycler.VHRecyclerEmptyWithRefresh;
 
 /**
  * Created by rgun on 25.08.16.

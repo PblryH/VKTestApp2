@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import javax.inject.Inject;
 
-import rgun.vktestapp.ui.extras.BaseRetainFragment;
+import rgun.vktestapp.ui.extras.architecture.BaseRetainFragment;
 import rgun.vktestapp.ui.screen.friends_list.dagger.DaggerFriendsListComponent;
 import rgun.vktestapp.ui.screen.friends_list.dagger.FriendsListComponent;
 import rgun.vktestapp.ui.screen.friends_list.dagger.FriendsListModule;

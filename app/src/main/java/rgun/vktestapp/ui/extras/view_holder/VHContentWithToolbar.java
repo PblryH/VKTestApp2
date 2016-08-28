@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.extras;
+package rgun.vktestapp.ui.extras.view_holder;
 
 import android.os.Build;
 import android.support.v7.widget.Toolbar;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import rgun.vktestapp.R;
+import rgun.vktestapp.ui.extras.architecture.BaseVH;
 
 /**
  * Common View Holder with toolbar

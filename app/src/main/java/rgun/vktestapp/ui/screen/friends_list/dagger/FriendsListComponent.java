@@ -2,7 +2,7 @@ package rgun.vktestapp.ui.screen.friends_list.dagger;
 
 
 import dagger.Component;
-import rgun.vktestapp.ui.extras.PerActivity;
+import rgun.vktestapp.ui.extras.architecture.PerActivity;
 import rgun.vktestapp.ui.screen.friends_list.FriendsListFragment;
 
 /**

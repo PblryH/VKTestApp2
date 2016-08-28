@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.extras;
+package rgun.vktestapp.ui.extras.architecture;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,12 +1,10 @@
 package rgun.vktestapp.ui.screen.friends_list.dagger;
 
-import android.support.v7.app.AppCompatActivity;
-
 import javax.inject.Inject;
 
 import dagger.Module;
 import dagger.Provides;
-import rgun.vktestapp.ui.extras.PerActivity;
+import rgun.vktestapp.ui.extras.architecture.PerActivity;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendsListModel;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendsListModelImpl;
 import rgun.vktestapp.ui.screen.friends_list.presenter.FriendsListPresenter;

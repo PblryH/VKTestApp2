@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.extras;
+package rgun.vktestapp.ui.extras.architecture;
 
 import android.view.LayoutInflater;
 import android.view.View;
