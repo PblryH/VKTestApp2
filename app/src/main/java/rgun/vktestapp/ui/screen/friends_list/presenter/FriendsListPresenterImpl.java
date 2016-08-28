@@ -26,6 +26,7 @@ public class FriendsListPresenterImpl implements FriendsListPresenter {
         @Override
         public void onError(String error) {
             mView.showToast(error);
+            mView.setPullToRefreshState(false);
         }
     };
 
