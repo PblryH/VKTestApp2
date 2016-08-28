@@ -1,4 +1,4 @@
-package rgun.vktestapp.ui.screen.friends_list.view;
+package rgun.vktestapp.ui.screen.friends_list.view.recycler_view;
 
 import android.content.Context;
 import android.content.res.Resources;

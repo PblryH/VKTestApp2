@@ -21,6 +21,7 @@ import rgun.vktestapp.ui.extras.recycler.DividerItemDecoration;
 import rgun.vktestapp.ui.screen.auth.AuthActivity;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendModel;
 import rgun.vktestapp.ui.screen.friends_list.presenter.FriendsListPresenter;
+import rgun.vktestapp.ui.screen.friends_list.view.recycler_view.FriendsListAdapter;
 
 /**
  * Created by rgun on 25.08.16.
