@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import rgun.vktestapp.R;
 import rgun.vktestapp.ui.extras.recycler.RecyclerViewAdapter;
 import rgun.vktestapp.ui.screen.friends_list.model.FriendModel;
@@ -63,11 +65,13 @@ public class FriendsListAdapter extends RecyclerViewAdapter<FriendModel, Friends
 
         private static final int layout = R.layout.list_item_friend;
 
+
+        @BindView(R.id.name)
         public TextView name;
 
         public FriendsViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name);
+            ButterKnife.bind(this, itemView);
         }
 
     }

@@ -1,10 +1,10 @@
 package rgun.vktestapp.ui.extras.recycler;
 
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import rgun.vktestapp.R;
-import rgun.vktestapp.ui.extras.recycler.RecyclerViewEmptySupport;
 
 
 /**
@@ -13,15 +13,14 @@ import rgun.vktestapp.ui.extras.recycler.RecyclerViewEmptySupport;
  */
 public class VHRecyclerEmpty {
 
+    @BindView(R.id.list)
     public RecyclerViewEmptySupport recyclerView;
+
+    @BindView(R.id.list_empty)
     public View empty;
 
-    public VHRecyclerEmpty(AppCompatActivity activity){
-        this(activity.findViewById(android.R.id.content));
-    }
 
     public VHRecyclerEmpty(View v) {
-        recyclerView = (RecyclerViewEmptySupport) v.findViewById(R.id.list);
-        empty = v.findViewById(R.id.list_empty);
+        ButterKnife.bind(this, v);
     }
 }

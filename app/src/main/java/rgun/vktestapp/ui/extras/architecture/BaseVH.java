@@ -17,7 +17,7 @@ abstract public class BaseVH {
 
     public BaseVH(LayoutInflater inflater, ViewGroup view, int layout) {
         mView = inflater.inflate(layout, view, false);
-        unbinder = ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, mView);
     }
 
     public void unbind() {

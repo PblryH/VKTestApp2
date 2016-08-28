@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import butterknife.BindView;
 import rgun.vktestapp.R;
 import rgun.vktestapp.ui.extras.architecture.BaseVH;
 
@@ -16,8 +17,12 @@ import rgun.vktestapp.ui.extras.architecture.BaseVH;
 abstract public class VHContentWithToolbar extends BaseVH {
 
     public static final int layout = R.layout.template_content_with_toolbar;
-    private FrameLayout content;
+
+    @BindView(R.id.content)
+    protected FrameLayout content;
+    @BindView(R.id.toolbar)
     public Toolbar toolbar;
+
     private LayoutInflater mInflater;
 
     public VHContentWithToolbar(LayoutInflater inflater, ViewGroup view){
@@ -27,8 +32,6 @@ abstract public class VHContentWithToolbar extends BaseVH {
     public VHContentWithToolbar(LayoutInflater inflater, ViewGroup view, boolean isElevated) {
         super(inflater, view, layout);
         mInflater = inflater;
-        content = (FrameLayout) getView().findViewById(R.id.content);
-        toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
         if (!isElevated && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             toolbar.setElevation(0);
         }

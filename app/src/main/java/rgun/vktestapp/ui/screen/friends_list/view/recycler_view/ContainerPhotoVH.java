@@ -5,6 +5,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import rgun.vktestapp.R;
 
 /**
@@ -12,13 +14,16 @@ import rgun.vktestapp.R;
  */
 public class ContainerPhotoVH {
 
+    @BindView(R.id.photo)
     public ImageView photo;
+
+    @BindView(R.id.errorText)
     public TextView errorText;
+
+    @BindView(R.id.progress)
     public ProgressBar progress;
 
     public ContainerPhotoVH(View v) {
-        photo = (ImageView) v.findViewById(R.id.photo);
-        errorText = (TextView) v.findViewById(R.id.errorText);
-        progress = (ProgressBar) v.findViewById(R.id.progress);
+        ButterKnife.bind(this, v);
     }
 }
