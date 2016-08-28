@@ -53,5 +53,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.2.1'
     // https://mvnrepository.com/artifact/commons-io/commons-io
     compile group: 'commons-io', name: 'commons-io', version: '2.4'
-    compile project(':vksdk_library')
+    compile 'com.vk:androidsdk:1.6.5'
 }
