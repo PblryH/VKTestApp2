@@ -5,9 +5,19 @@ package rgun.vktestapp.ui.screen.auth.view;
  */
 public interface AuthView {
 
+    /**
+     * Перейти на экран авторизации
+     */
     void showLogin();
 
+    /**
+     * Перейти на экран списка друзей
+     */
     void showFriendsListScreen();
 
+    /**
+     * Показать тоаст
+     * @param s сообщение
+     */
     void showToast(String s);
 }

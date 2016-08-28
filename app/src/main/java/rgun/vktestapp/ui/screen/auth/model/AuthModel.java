@@ -9,20 +9,43 @@ import com.vk.sdk.api.VKError;
  */
 public interface AuthModel {
 
+    /**
+     * Вызывается при событии Activity#onResume
+     */
     void onResume();
 
+    /**
+     * Вызывается при событии Activity#onPause
+     */
     void onPause();
 
+    /**
+     * Вызывается при событии Activity#onActivityResult
+     */
     void onActivityResult(int requestCode, int resultCode, Intent data);
 
+    /**
+     * Устанавливает колбэк авторизации через VK
+     * @param callback {@link CallBack}
+     */
     void setCallback(CallBack callback);
 
     interface CallBack {
 
+        /**
+         * Необходимо показать экран авторизации
+         */
         void mustShowLogin();
 
+        /**
+         * Вызывается когда имеется авторизация
+         */
         void onAuthorized();
 
+        /**
+         * При ошибке авторизации
+         * @param error {@link VKError}
+         */
         void onAuthorizationError(VKError error);
     }
 }

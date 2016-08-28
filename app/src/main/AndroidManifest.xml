@@ -41,14 +41,6 @@
             android:label="ServiceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/VK.Transparent"/>
-        <activity
-            android:name=".ui.screen.photo.list.ActivityPhotoList"
-            android:configChanges="keyboardHidden|orientation|layoutDirection"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ui.screen.photo.view.ActivityPhotoView"
-            android:label="@string/app_name"/>
         <activity android:name=".ui.screen.friends_list.FriendsListActivity">
         </activity>
     </application>

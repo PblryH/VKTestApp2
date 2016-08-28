@@ -60,6 +60,7 @@ public class FriendsListViewImpl implements
     @Override
     public void setFriendsToList(ArrayList<FriendModel> friends) {
         vh.recycler.recyclerView.scrollToPosition(0);
+        mAdapter.clear();
         mAdapter.addAll(friends);
     }
 
