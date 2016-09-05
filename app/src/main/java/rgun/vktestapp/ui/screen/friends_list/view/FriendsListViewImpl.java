@@ -92,6 +92,11 @@ public class FriendsListViewImpl implements
     }
 
     @Override
+    public void showToast(FriendsListMessages messages) {
+        Toast.makeText(mActivity, messages.getStringRes(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void clearList() {
         vh.recycler.recyclerView.scrollToPosition(0);
         mAdapter.clear();

@@ -38,6 +38,12 @@ public interface FriendsListView extends BaseView<FriendsListPresenter> {
     void showToast(String s);
 
     /**
+     * Показать тоаст
+     * @param messages сообщение
+     */
+    void showToast(FriendsListMessages messages);
+
+    /**
      * Очистить список
      */
     void clearList();

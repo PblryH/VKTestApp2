@@ -1,6 +1,5 @@
 package rgun.vktestapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -23,7 +22,6 @@ public class Application extends android.app.Application {
     public static final int CACHE_APP_VERSION = 1;
     public static final int CACHE_MAX_SIZE = 1024 * 1024;
 
-    public static Context context;
     public static SimpleDiskCache cache;
 
     VKAccessTokenTracker vkAccessTokenTracker = new VKAccessTokenTracker() {
@@ -45,14 +43,13 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context = getApplicationContext();
         vkAccessTokenTracker.startTracking();
         VKSdk.initialize(this);
         initCache();
     }
 
     private void initCache(){
-        File dir = new File(context.getCacheDir(), "friendslist.cache");
+        File dir = new File(getApplicationContext().getCacheDir(), "friendslist.cache");
         try {
             cache = SimpleDiskCache.open(dir, CACHE_APP_VERSION, CACHE_MAX_SIZE);
         } catch (IOException e) {
